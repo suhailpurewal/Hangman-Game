@@ -11,6 +11,8 @@ var correctinorder = ""
 var currentLetter = ""
 var guessedLetters = [];
 var guessesRemaining = 9;
+var loseCount = 0;
+var winCount = 0;
 
 
 
