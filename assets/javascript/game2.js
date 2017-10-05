@@ -141,14 +141,19 @@ function validateUserGuess() {
 function hasUserWon() {
   if (arrayLetters.indexOf(false) < 0 ) {
     console.log("USER WINS");
+    document.getElementById("rightword").innerHTML = wordChoice;
+    alert("You Win!");
     winCount++;
     resetGame();
+
   } 
 }
 
 function hasUserLost() {
   if (guessesRemaining == 0) {
     console.log("USER LOSES");
+    document.getElementById("rightword").innerHTML = wordChoice;
+    alert("You Lost!");
     loseCount++;
     resetGame();
   }
