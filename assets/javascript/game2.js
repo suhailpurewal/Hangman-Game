@@ -4,12 +4,12 @@ var wordList = ["atlantis", "challenger", "columbia", "discovery", "enterprise",
 // Picks random word using math
 var wordChoice = wordList[Math.floor(Math.random() * wordList.length)];
 // Replaces word with appropriate number of dashes
-var dashWord =  wordChoice.replace(/\w/g,"_ ");
+// var dashWord =  wordChoice.replace(/\w/g,"_ ");
 // Letter array for word choice
 var arrayLetters = [];
 // Splits word into an array of letters
-	// var letters = wordChoice.split("");
-	// 	for(var i = 0; i < letters.length; i++);
+// 	var letters = wordChoice.split("");
+// 		for(var i = 0; i < letters.length; i++);
 // Alphabet of valid inputs
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 // Not sure if i need most of these, but have them here just in case i need them
@@ -22,7 +22,7 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 var guessesRemaining = 9;
 var guessesMade = [];
 // win/loss count
-var loseCount = 0;
+var lossCount = 0;
 var winCount = 0;
 var html = "<p><h1>";
 
@@ -42,7 +42,7 @@ function consoleLogs() {
 	console.log("guessesRemaining: " + guessesRemaining + "\n");
 	console.log("guessesMade: " + guessesMade + "\n");
 	console.log("arrayLetters: " + arrayLetters + "\n");
-	console.log("winCount: " + winCount + "\n" + "losses: " + loseCount + "\n");
+	console.log("winCount: " + winCount + "\n" + "losseCount: " + lossCount + "\n");
 	console.log("--------------------------------");
 }
 
@@ -74,11 +74,11 @@ function updateGame() {
 	}
 	html += "</h1></p>"	
 
-	document.querySelector("#game").innerHTML = html;
+	document.getElementById("game").innerHTML = html;
 
 
-	htmlStats = "<p><h3>Wins: " + winCount + " Losses: " + loseCount + " Guesses Left : " + guessesRemaining + "</h3></p>";
-	document.querySelector("#stats").innerHTML = htmlStats;
+	htmlStats = "<p><h3>Wins: " + winCount + " Losses: " + lossCount + " Guesses Left : " + guessesRemaining + "</h3></p>";
+	document.getElementById("stats").innerHTML = htmlStats;
 
 
 	htmlGuesses = "<p><h3>"
@@ -86,7 +86,7 @@ function updateGame() {
 		htmlGuesses += guessesMade[i] + "&nbsp;";
 	}
 	htmlGuesses += "</h3></p>";
-	document.querySelector("#guessedletters").innerHTML = htmlGuesses;
+	document.getElementById("guessedletters").innerHTML = htmlGuesses;
 }
 
 
@@ -101,7 +101,7 @@ function resetGame() {
   splitWordIntoArray();
 
   var htmlInstructions="<p><h3>Press any key to begin guessing</p></h3>";
-  document.querySelector("#instructions").innerHTML = htmlInstructions;
+  document.getElementById("instructions").innerHTML = htmlInstructions;
   var htmlGameInitial = "<p><h1>";
 
   for (var i = 0; i < wordChoice.length; i++) {
@@ -112,13 +112,12 @@ function resetGame() {
     }
   }
 
-
+//updates stats box
   htmlGameInitial += "</h1></p>"
-  document.querySelector("#game").innerHTML = htmlGameInitial;
-  var htmlStats = "<p><h3>" + "Wins: " + winCount + " Losses: " + loseCount + " Guesses Left : " + guessesRemaining + "</h3></p>";
-  document.querySelector("#stats").innerHTML = htmlStats;
+  document.getElementById("game").innerHTML = htmlGameInitial;
+  var htmlStats = "<p><h3>" + "Wins: " + winCount + " Losses: " + lossCount + " Guesses Left : " + guessesRemaining + "</h3></p>";
+  document.getElementById("stats").innerHTML = htmlStats;
 }
-
 
 
 function validateUserGuess() {
@@ -138,6 +137,7 @@ function validateUserGuess() {
   } 
 }
 
+//checks if user has won
 function hasUserWon() {
   if (arrayLetters.indexOf(false) < 0 ) {
     console.log("USER WINS");
@@ -148,13 +148,13 @@ function hasUserWon() {
 
   } 
 }
-
+//checks if user has lost
 function hasUserLost() {
   if (guessesRemaining == 0) {
     console.log("USER LOSES");
     document.getElementById("rightword").innerHTML = wordChoice;
     alert("You Lost!");
-    loseCount++;
+    lossCount++;
     resetGame();
   }
 
@@ -163,7 +163,7 @@ function hasUserLost() {
 
 
 
-
+//calling functions;
 splitWordIntoArray();
 
 

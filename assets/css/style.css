@@ -1,0 +1,10 @@
+body {
+	background-image: url(../images/nyskyline.jpg);
+	background-size: 100%;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	margin-top: 10%;
+}
+h1 {
+	font-weight: bold;
+}
