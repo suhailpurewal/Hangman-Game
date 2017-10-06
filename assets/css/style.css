@@ -46,3 +46,9 @@ h1 {
 	float: right;
 	margin-top: -60px;
 }
+#guessedletters {
+	text-decoration: line-through;
+	text-decoration-color: white;
+	text-decoration-style: dotted;
+
+}
