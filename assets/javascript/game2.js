@@ -1,6 +1,6 @@
 
 // List of all words
-var wordList = ["atlantis", "challenger", "columbia", "discovery", "enterprise", "endeavour", "rza", "gza", "method man", "raekwon", "ghostface killah", "inspectah deck", "u god", "masta killa", "cappadonna", "ol dirty bastard"];
+var wordList = ["atlantis", "challenger", "columbia", "discovery", "enterprise", "endeavour", "rza", "gza", "method man", "raekwon", "ghostface killah", "inspectah deck", "u god", "masta killa", "cappadonna", "ol dirty bastard", "tiger style", "shaolin", "cream" ];
 // Picks random word using math
 var wordChoice = wordList[Math.floor(Math.random() * wordList.length)];
 // Replaces word with appropriate number of dashes
