@@ -46,7 +46,7 @@ function consoleLogs() {
 	console.log("--------------------------------");
 }
 
-// splits word into array
+// splits word into array & attach boolean value to each letter
 function splitWordIntoArray() {
 	for (var i = 0, j = 0; i < wordChoice.length; i++) {
 		arrayLetters[j] = wordChoice.charAt(i);
@@ -60,7 +60,8 @@ function splitWordIntoArray() {
 	}
 }
 
-// updates HTML page with relevant info
+// updates HTML page with relevant info  
+//replaces word with letters or underscore based on guess
 function updateGame() {
 
 	for (i = 0, j = 0; i < (arrayLetters.length / 2); i++) {
@@ -77,7 +78,7 @@ function updateGame() {
 	document.getElementById("game").innerHTML = html;
 
 
-	htmlStats = "<p><h3>Wins: " + winCount + " Losses: " + lossCount + " Guesses Left : " + guessesRemaining + "</h3></p>";
+	htmlStats = "<p><h3>Wins: " + winCount +  " Losses: " + lossCount + " Guesses Left : " + guessesRemaining + "</h3></p>";
 	document.getElementById("stats").innerHTML = htmlStats;
 
 
@@ -100,7 +101,7 @@ function resetGame() {
   arrayLetters = [];
   splitWordIntoArray();
 
-  var htmlInstructions="<p><h3>Press any key to begin guessing</p></h3>";
+  var htmlInstructions="<p><h4>Press any key to begin guessing</p></h4>";
   document.getElementById("instructions").innerHTML = htmlInstructions;
   var htmlGameInitial = "<p><h1>";
 
@@ -112,14 +113,14 @@ function resetGame() {
     }
   }
 
-//updates stats box
+//updates stats on html page
   htmlGameInitial += "</h1></p>"
   document.getElementById("game").innerHTML = htmlGameInitial;
   var htmlStats = "<p><h3>" + "Wins: " + winCount + " Losses: " + lossCount + " Guesses Left : " + guessesRemaining + "</h3></p>";
   document.getElementById("stats").innerHTML = htmlStats;
 }
 
-
+//checks letters against letters already guessed & alphabet to make sure input is valid
 function validateUserGuess() {
   if (arrayLetters.indexOf(userGuess) < 0 && guessesMade.indexOf(userGuess) < 0 && alphabet.indexOf(userGuess) >= 0) {
     guessesRemaining--;
@@ -137,7 +138,7 @@ function validateUserGuess() {
   } 
 }
 
-//checks if user has won
+//checks if user has won, prompt & update counter if so. - then resets
 function hasUserWon() {
   if (arrayLetters.indexOf(false) < 0 ) {
     console.log("USER WINS");
@@ -148,7 +149,7 @@ function hasUserWon() {
 
   } 
 }
-//checks if user has lost
+//checks if user has lost, prompt & update counter if so. - then resets
 function hasUserLost() {
   if (guessesRemaining == 0) {
     console.log("USER LOSES");
@@ -172,7 +173,7 @@ resetGame();
 
 consoleLogs();
 
-// start listening for keypress
+// start listening for keypress / run functions
 document.onkeyup = function(event) {
 
 	userGuess = String.fromCharCode(event.keyCode).toLowerCase();
